@@ -210,6 +210,16 @@
   color: var(--ink); text-align: center; max-width: 600px; margin-left: auto; margin-right: auto;
 }
 
+/* parking map */
+.park-map { margin: 14px 0 0; max-width: 360px; }
+.park-map img {
+  width: 100%; display: block; border-radius: 10px;
+  border: 2px solid var(--ink); box-shadow: 4px 4px 0 var(--ink);
+}
+.park-map figcaption {
+  margin-top: 7px; font-family: var(--font-chart); font-size: 0.82rem; color: #416072;
+}
+
 /* Sunwise photo */
 .boat-photo { margin: 0 0 14px; }
 .boat-photo img {
