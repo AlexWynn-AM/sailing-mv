@@ -89,8 +89,15 @@
 .pop-n { margin: 0 8px 0 0; }
 .pop-row { font-size: 0.9rem; margin: 4px 0; }
 .pop-row b { color: var(--buoy-green); }
+.pop-maps {
+  display: inline-block; margin-top: 10px;
+  font-family: var(--font-chart); font-size: 0.85rem;
+  color: #fff; background: var(--sea); text-decoration: none;
+  padding: 5px 10px; border-radius: 6px; border: 1.5px solid var(--ink);
+}
+.pop-maps:hover { background: var(--sea-deep); }
 .pop-link {
-  display: inline-block; margin-top: 8px; font-family: var(--font-display);
+  display: block; margin-top: 8px; font-family: var(--font-display);
   font-weight: 600; color: var(--sea); text-decoration: none;
 }
 .pop-link:hover { text-decoration: underline; }
@@ -176,6 +183,17 @@
   border-radius: 12px; padding: 16px; align-self: start;
 }
 .leg-note { margin: 0; font-size: 0.95rem; }
+
+/* Sunwise photo */
+.boat-photo { margin: 0 0 14px; }
+.boat-photo img {
+  width: 100%; display: block; border-radius: 10px;
+  border: 2px solid var(--ink); box-shadow: 4px 4px 0 var(--ink);
+}
+.boat-photo figcaption {
+  margin-top: 7px; font-family: var(--font-chart); font-size: 0.82rem;
+  color: #416072; text-align: center;
+}
 
 /* ---------- game cards ---------- */
 .game-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 760px; margin: 0 auto; }

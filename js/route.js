@@ -25,24 +25,31 @@
 
   /* ---- the four stops: real dinghy-landing coordinates ---- */
   var STOPS = [
-    { n: 1, name: 'East Greenwich, RI', ll: [41.6516, -71.4480], target: '#egr',
-      land: 'Town Dock / Scalloptown Park',
-      walk: 'Main St (provision), waterfront dining — all uphill of the dock.' },
+    { n: 1, name: 'East Greenwich, RI — home base', ll: [41.6643, -71.4448], target: '#egr',
+      land: '“Sunwise” on a mooring at Greenwich Cove Marina (3 Division St)',
+      walk: 'Dinghy ashore to the marina or the town dock / Scalloptown; Main St for provisions.',
+      dock: [41.6645, -71.4459], dockName: 'Greenwich Cove Marina' },
     { n: 2, name: 'Newport, RI', ll: [41.4877, -71.3270], target: '#newport',
       land: "Perrotti Park dinghy dock — main harbor, by Save The Bay's aquarium",
-      walk: "Bowen's & Bannister's Wharf, Thames St — steps away." },
+      walk: "Bowen's & Bannister's Wharf, Thames St — steps away.",
+      dock: [41.4879, -71.3266], dockName: 'Perrotti Park dinghy dock' },
     { n: 3, name: 'Cuttyhunk Island', ll: [41.4258, -70.9270], target: '#cuttyhunk',
       land: 'Cuttyhunk Town Dock (in the pond)',
-      walk: 'Lookout hike, general store, beach. The raw-bar boat comes to you.' },
+      walk: 'Lookout hike, general store, beach. The raw-bar boat comes to you.',
+      dock: [41.4259, -70.9265], dockName: 'Cuttyhunk Town Dock' },
     { n: 4, name: "Martha's Vineyard — Vineyard Haven", ll: [41.4564, -70.5990], target: '#mv',
       land: 'Tisbury Town Dock — right by the Steamship ferry terminal',
-      walk: 'Main St, Black Dog, Owen Park beach. Bus/bikes for Oak Bluffs & Edgartown.' }
+      walk: 'Main St, Black Dog, Owen Park beach. Bus/bikes for Oak Bluffs & Edgartown.',
+      dock: [41.4562, -70.5985], dockName: 'Tisbury Town Dock' }
   ];
 
   /* ---- approximate water route, leg by leg (kept off the land) ---- */
   var ROUTE = [
-    [41.6516, -71.4480], // East Greenwich dock
-    [41.6300, -71.4230], // out of Greenwich Cove into the West Passage
+    [41.6643, -71.4448], // start: "Sunwise" on her mooring, Greenwich Cove Marina
+    [41.6560, -71.4445], // south down Greenwich Cove
+    [41.6470, -71.4420], // out the cove mouth into Greenwich Bay
+    [41.6330, -71.4250], // across Greenwich Bay
+    [41.6080, -71.4000], // into the West Passage
     [41.5950, -71.3880], // down the West Passage
     [41.5780, -71.3600], // round the north tip of Conanicut (Conanicut Point)
     [41.5380, -71.3470], // into the East Passage
@@ -92,14 +99,16 @@
       iconSize: [34, 34], iconAnchor: [17, 17]
     });
     var m = L.marker(s.ll, { icon: icon, title: s.name }).addTo(map);
+    var gmaps = 'https://www.google.com/maps/search/?api=1&query=' + s.dock[0] + ',' + s.dock[1];
     m.bindPopup(
       '<div class="pop">' +
         '<div class="pop-h"><span class="pop-n">' + s.n + '</span>' + s.name + '</div>' +
         '<div class="pop-row"><b>Land the dinghy:</b> ' + s.land + '</div>' +
         '<div class="pop-row"><b>Walk to:</b> ' + s.walk + '</div>' +
+        '<a class="pop-maps" href="' + gmaps + '" target="_blank" rel="noopener">Open ' + s.dockName + ' in Google Maps &#8599;</a>' +
         '<a class="pop-link" href="' + s.target + '">See the day &rarr;</a>' +
       '</div>',
-      { maxWidth: 260 }
+      { maxWidth: 270 }
     );
     markers.push(m);
   });
