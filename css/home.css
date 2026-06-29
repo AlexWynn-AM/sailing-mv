@@ -95,6 +95,24 @@
 }
 .pop-link:hover { text-decoration: underline; }
 
+/* skipper's notes (cruiser detail) inside town side-box */
+.skipper {
+  margin: 0 0 14px; padding: 12px;
+  background: var(--sea-deep); color: var(--sea-foam);
+  border-radius: 10px; font-size: 0.9rem; line-height: 1.5;
+}
+.skipper b { color: var(--gold); }
+.skipper .vhf {
+  font-family: var(--font-chart); color: #fff;
+  background: #ffffff1f; padding: 0 5px; border-radius: 4px; white-space: nowrap;
+}
+
+/* map sources / caveat */
+.map-cred {
+  color: var(--sea-foam); opacity: 0.85; font-size: 0.82rem;
+  max-width: 640px; margin: 10px auto 0;
+}
+
 /* "worth a ride" note in town cards */
 .ride-note {
   margin-top: 12px; padding: 10px 12px;
