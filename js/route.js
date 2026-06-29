@@ -29,10 +29,10 @@
       land: '“Sunwise” on a mooring at Greenwich Cove Marina (3 Division St)',
       walk: 'Dinghy ashore to the marina or the town dock / Scalloptown; Main St for provisions.',
       dock: [41.6645, -71.4459], dockName: 'Greenwich Cove Marina' },
-    { n: 2, name: 'Newport, RI', ll: [41.4877, -71.3270], target: '#newport',
-      land: "Perrotti Park dinghy dock — main harbor, by Save The Bay's aquarium",
+    { n: 2, name: 'Newport, RI', ll: [41.489437, -71.317795], target: '#newport',
+      land: "Newport dinghy dock — main harbor, steps to the wharves & Thames St",
       walk: "Bowen's & Bannister's Wharf, Thames St — steps away.",
-      dock: [41.4879, -71.3266], dockName: 'Perrotti Park dinghy dock' },
+      dock: [41.489437, -71.317795], dockName: 'Newport dinghy dock' },
     { n: 3, name: 'Cuttyhunk Island', ll: [41.4258, -70.9270], target: '#cuttyhunk',
       land: 'Cuttyhunk Town Dock (in the pond)',
       walk: 'Lookout hike, general store, beach. The raw-bar boat comes to you.',
@@ -54,8 +54,10 @@
     [41.5780, -71.3600], // round the north tip of Conanicut (Conanicut Point)
     [41.5380, -71.3470], // into the East Passage
     [41.5050, -71.3400], // under the Pell (Newport) Bridge
-    [41.4920, -71.3300], // Newport approach
-    [41.4877, -71.3270], // Newport (main harbor, by the aquarium)
+    [41.4920, -71.3300], // Newport Harbor approach
+    [41.4885, -71.3260], // into the harbor
+    [41.489437, -71.317795], // Newport dinghy dock
+    [41.4885, -71.3260], // back out of the harbor
     [41.4520, -71.3150], // out of Newport into Rhode Island Sound
     [41.4080, -71.2300], // across the sound (south of Sakonnet)
     [41.4080, -71.0800],
