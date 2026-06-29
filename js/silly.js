@@ -166,7 +166,9 @@
     "Sunset photo blocks the helm",
     "“I read it on a website” (this one)",
     "Captain of Vibes overrules logic",
-    "A nautical word said very wrong"
+    "A nautical word said very wrong",
+    "Anchor drags at 2am — whole crew up",
+    "“Did we set the anchor?” at midnight"
   ];
   var FREE = "“This is the life”";
   var grid = document.getElementById('bingo-grid');
