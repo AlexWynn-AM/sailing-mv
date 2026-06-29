@@ -198,6 +198,18 @@
 .gallery figcaption a { color: var(--sea); }
 @media (max-width: 720px) { .gallery { grid-template-columns: 1fr; } .gallery img { height: 260px; } }
 
+/* berth plan (cabin layout diagram) */
+.berth-plan { margin: 24px auto 0; max-width: 760px; }
+.berth-plan img {
+  width: 100%; display: block; background: #fff;
+  border-radius: 12px; border: 2px solid var(--ink); box-shadow: 5px 5px 0 var(--ink);
+  padding: 10px;
+}
+.berth-plan figcaption {
+  margin-top: 10px; font-family: var(--font-body); font-size: 0.92rem;
+  color: var(--ink); text-align: center; max-width: 600px; margin-left: auto; margin-right: auto;
+}
+
 /* Sunwise photo */
 .boat-photo { margin: 0 0 14px; }
 .boat-photo img {
