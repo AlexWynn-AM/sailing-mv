@@ -286,11 +286,11 @@
 
     init: function () {
       this.state = GS.READY;
-      this.dinghy = { x: 70, y: BASE_H / 2, vx: 0, vy: 0, r: 14 };
-      this.target = { x: BASE_W - 90, y: 150, r: 26 };
+      this.dinghy = { x: 80, y: BASE_H / 2, vx: 0, vy: 0, r: 18 };
+      this.target = { x: BASE_W - 90, y: 150, r: 28 };
       this.time = 0; this.hits = 0;
-      // drifting current: pushes generally down-left ("set & drift")
-      this.current = { x: -14, y: 26 };
+      // drifting current (px/s): pushes generally down-left ("set & drift")
+      this.current = { x: -26, y: 40 };
       // floating lobster pots (red/green) with slow bob
       this.pots = [];
       var n = 7;
@@ -316,8 +316,8 @@
 
       this.time += dt;
 
-      // ---- input -> acceleration ----
-      var ax = 0, ay = 0, acc = 220;
+      // ---- input -> rowing direction (unit vector) ----
+      var ax = 0, ay = 0;
       if (keys['arrowup'] || keys['w'] || dpadState.up) ay -= 1;
       if (keys['arrowdown'] || keys['s'] || dpadState.down) ay += 1;
       if (keys['arrowleft'] || keys['a'] || dpadState.left) ax -= 1;
@@ -332,11 +332,15 @@
       if (al > 0) { ax /= al; ay /= al; }
 
       var d = this.dinghy;
-      d.vx += (ax * acc + this.current.x) * dt;
-      d.vy += (ay * acc + this.current.y) * dt;
-      // drag
-      d.vx *= 0.92; d.vy *= 0.92;
-      d.x += d.vx * dt; d.y += d.vy * dt;
+      var ACC = 1500;                          // px/s^2 of rowing thrust (snappy)
+      d.vx += ax * ACC * dt;
+      d.vy += ay * ACC * dt;
+      // frame-rate-independent drag (top speed ~320 px/s)
+      var k = Math.pow(0.01, dt);
+      d.vx *= k; d.vy *= k;
+      // advance: rowing velocity + the current's steady set & drift
+      d.x += (d.vx + this.current.x) * dt;
+      d.y += (d.vy + this.current.y) * dt;
       // bounds
       d.x = clamp(d.x, d.r, BASE_W - d.r);
       d.y = clamp(d.y, d.r, BASE_H - d.r);
@@ -406,16 +410,30 @@
         circle(px, py - p.r - 7, 2.5, C.parch, C.ink, 1);    // flag dot
       }
 
-      // dinghy (small rowboat) — heading from velocity
+      // dinghy (small rowboat) — heading from velocity, bold for visibility
       var d = this.dinghy;
-      var h = (Math.abs(d.vx) + Math.abs(d.vy) > 6) ? Math.atan2(d.vy, d.vx) + Math.PI / 2 : 0;
+      var spd = Math.hypot(d.vx, d.vy);
+      var h = (spd > 8) ? Math.atan2(d.vy, d.vx) + Math.PI / 2 : Math.PI; // bow-down at rest
       ctx.save();
       ctx.translate(d.x, d.y); ctx.rotate(h);
-      ctx.fillStyle = C.hull; ctx.strokeStyle = C.hullDark; ctx.lineWidth = 2;
+      // wake
+      ctx.fillStyle = '#ffffff3a';
+      ctx.beginPath(); ctx.ellipse(0, d.r + 5, d.r * 0.7, d.r * 1.25, 0, 0, Math.PI * 2); ctx.fill();
+      // oars
+      ctx.strokeStyle = C.rope; ctx.lineWidth = 3;
+      ctx.beginPath(); ctx.moveTo(-3, 0); ctx.lineTo(-d.r - 9, 7); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(3, 0); ctx.lineTo(d.r + 9, 7); ctx.stroke();
+      // hull with a bright white outline so it pops on the water
+      ctx.fillStyle = C.hull; ctx.strokeStyle = C.white; ctx.lineWidth = 3.5;
       ctx.beginPath();
-      ctx.moveTo(0, -d.r); ctx.lineTo(d.r - 2, d.r); ctx.lineTo(-(d.r - 2), d.r); ctx.closePath();
-      ctx.fill(); ctx.stroke();
-      rect(-5, -2, 10, 7, C.parch2);                          // seat
+      ctx.moveTo(0, -d.r);
+      ctx.quadraticCurveTo(d.r, -3, d.r - 4, d.r);
+      ctx.lineTo(-(d.r - 4), d.r);
+      ctx.quadraticCurveTo(-d.r, -3, 0, -d.r);
+      ctx.closePath(); ctx.fill(); ctx.stroke();
+      // thwarts (seats)
+      rect(-(d.r - 6), -5, (d.r - 6) * 2, 4, C.parch2);
+      rect(-(d.r - 7), 4, (d.r - 7) * 2, 4, C.parch2);
       ctx.restore();
 
       // HUD on screen

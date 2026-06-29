@@ -36,26 +36,71 @@
 }
 .sea-section .eyebrow { color: var(--gold); }
 
-/* ---------- chart map ---------- */
-.chartbox {
+/* ---------- real (Leaflet) map ---------- */
+.mapbox {
   background: var(--parchment);
   border: 3px solid var(--ink);
   border-radius: 16px;
   box-shadow: 10px 10px 0 #00000040;
-  padding: 10px;
-  overflow: hidden;
+  padding: 8px;
 }
-#routeMap { width: 100%; height: auto; display: block; }
+#map {
+  width: 100%;
+  height: 540px;
+  border-radius: 10px;
+  border: 1px solid var(--ink);
+  background: var(--sea-shallow);
+}
+.maplegend {
+  color: var(--sea-foam); font-family: var(--font-chart);
+  font-size: 0.95rem; margin-top: 16px;
+}
+.lg-pin, .pop-n {
+  display: inline-grid; place-items: center;
+  width: 22px; height: 22px; border-radius: 50%;
+  background: var(--buoy-red); color: #fff; border: 2px solid #fff;
+  font-family: var(--font-display); font-weight: 700; font-size: 0.8rem;
+  vertical-align: middle; margin: 0 4px 0 12px;
+}
+.lg-pin:first-child { margin-left: 0; }
 
-.wp { cursor: pointer; }
-.wp-dot { fill: var(--buoy-red); stroke: #fff; stroke-width: 3; transition: r .15s ease, fill .15s; }
-.wp:hover .wp-dot, .wp:focus .wp-dot { r: 20; fill: var(--buoy-green); outline: none; }
-.wp-num { fill: #fff; font-family: var(--font-display); font-weight: 700; font-size: 18px; pointer-events: none; }
-.wp-label {
-  fill: var(--ink); font-family: var(--font-chart); font-size: 16px;
-  paint-order: stroke; stroke: var(--parchment); stroke-width: 4px; pointer-events: none;
+/* numbered stop pins */
+.stop-pin {
+  width: 34px; height: 34px; border-radius: 50%;
+  background: var(--buoy-red); color: #fff;
+  border: 3px solid #fff; box-shadow: 0 2px 6px #0006;
+  display: grid; place-items: center;
+  font-family: var(--font-display); font-weight: 700; font-size: 1.05rem;
 }
-#routeLine { transition: none; }
+.boat-wrap { pointer-events: none; }
+.route-boat {
+  width: 18px; height: 18px; border-radius: 50%;
+  background: #fff; border: 3px solid var(--ink);
+  box-shadow: 0 0 0 3px var(--route-glow);
+}
+
+/* popups, brand-styled */
+.leaflet-popup-content-wrapper { border-radius: 12px; border: 2px solid var(--ink); }
+.leaflet-popup-content { margin: 12px 14px; font-family: var(--font-body); }
+.pop-h {
+  font-family: var(--font-display); font-weight: 700; font-size: 1.05rem;
+  color: var(--sea-deep); margin-bottom: 8px; line-height: 1.2;
+}
+.pop-n { margin: 0 8px 0 0; }
+.pop-row { font-size: 0.9rem; margin: 4px 0; }
+.pop-row b { color: var(--buoy-green); }
+.pop-link {
+  display: inline-block; margin-top: 8px; font-family: var(--font-display);
+  font-weight: 600; color: var(--sea); text-decoration: none;
+}
+.pop-link:hover { text-decoration: underline; }
+
+/* "worth a ride" note in town cards */
+.ride-note {
+  margin-top: 12px; padding: 10px 12px;
+  background: #d6453d14; border-left: 3px solid var(--buoy-red);
+  border-radius: 6px; font-size: 0.92rem;
+}
 
 /* ---------- legs strip (built by JS) ---------- */
 .legs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 26px 0 4px; }

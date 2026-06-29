@@ -4,7 +4,7 @@
 // Palette matches the shared nautical-chart tokens.
 // =========================================================================
 
-import * as THREE from 'three';
+import * as THREE from './vendor/three.module.js';
 
 // ---- palette (mirrors css vars) ----
 const COL = {
