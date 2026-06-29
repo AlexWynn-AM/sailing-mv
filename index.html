@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
       integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
 <link rel="stylesheet" href="css/home.css">
+<link rel="stylesheet" href="css/silly.css">
 </head>
 <body>
 
@@ -25,22 +26,28 @@
 <header class="hero">
   <div class="wrap hero-grid">
     <div class="hero-copy">
-      <p class="eyebrow">Group Chat: "Sailing Summer MV"</p>
+      <p class="eyebrow">Group Chat: "Sailing Summer MV" &middot; 9:14 PM &middot; read by everyone, answered by nobody</p>
       <h1>Four harbors,<br>one dinghy,<br>zero chill.</h1>
       <p class="lede">
         A weekend(ish) sail from <b>East Greenwich, RI</b> down to
         <b>Martha's Vineyard</b>, hopping through Newport and Cuttyhunk.
-        Each leg is about a four-hour sail — easy life, with plenty of
-        time to poke around each town. Slow down whenever the weather (or
-        the vibe) says so.
+        Each leg is roughly a four-hour sail — which, with this crew, means
+        five hours, two snack breaks, and one heated debate about whether
+        that's a whale or a lobster pot. <i>(It's a lobster pot.)</i>
       </p>
       <p class="dateline">
         <span class="tag">Cast off</span> Fri / Sat / Sun &middot; July 17–19, 2026
-        <span class="tag">Crew</span> Austin &middot; Camron &middot; Dani &middot; Evan &middot; Gabri &amp; co.
+        <span class="tag">Crew</span> Austin &middot; Camron &middot; Dani &middot; Evan &middot; Gabri &amp; whoever brings ice
       </p>
+      <div class="chaos">
+        <span class="chaos-lbl">Predicted chaos level</span>
+        <span class="chaos-bar"><span class="chaos-fill"></span></span>
+        <span class="chaos-val">manageable</span>
+      </div>
       <div class="hero-cta">
         <a class="btn" href="#itinerary">Plot the course</a>
-        <a class="btn alt" href="arcade.html">Learn the ropes (arcade)</a>
+        <a class="btn alt" href="arcade.html">Learn the ropes</a>
+        <a class="btn ghost" href="#binnacle">Ask the boat a question</a>
       </div>
     </div>
 
@@ -59,6 +66,9 @@
           <path d="M113 58 C 165 80, 165 130, 113 148 Z" fill="url(#sailG)" stroke="#9bb6c2" stroke-width="2"/>
           <path d="M105 60 C 60 82, 62 128, 105 148 Z" fill="#fff" stroke="#9bb6c2" stroke-width="2"/>
           <circle cx="113" cy="52" r="6" fill="var(--buoy-red)" stroke="#4a2c12" stroke-width="2"/>
+          <!-- this boat has seen things -->
+          <g class="googly"><circle cx="74" cy="166" r="9" fill="#fff" stroke="#1d3b4d" stroke-width="2"/><circle class="pupil" cx="74" cy="169" r="4" fill="#1d3b4d"/></g>
+          <g class="googly"><circle cx="100" cy="166" r="9" fill="#fff" stroke="#1d3b4d" stroke-width="2"/><circle class="pupil" cx="100" cy="169" r="4" fill="#1d3b4d"/></g>
         </g>
         <g class="wave-row">
           <path d="M0 178 q15 -10 30 0 t30 0 t30 0 t30 0 t30 0 t30 0 t30 0 t30 0"
@@ -77,8 +87,9 @@
     <p class="eyebrow center">The Course</p>
     <h2 class="center" style="color:var(--parchment)">Tap a numbered stop to see the landing</h2>
     <p class="center" style="color:var(--sea-foam); max-width:660px; margin:6px auto 24px">
-      Real chart, real harbors. The green line is roughly the water route;
-      each pin sits on the dinghy landing. Pinch and drag to explore.
+      Real chart, real harbors, green line drawn by a real adult. Each pin is a
+      dinghy landing. The little boat sails the route by itself because, frankly,
+      it doesn't trust us with the helm either.
     </p>
 
     <div class="mapbox">
@@ -103,10 +114,13 @@
 <section class="section" id="itinerary">
   <div class="wrap">
     <p class="eyebrow center">Day by Day</p>
-    <h2 class="center">The float plan</h2>
-    <p class="center" style="max-width:680px;margin:6px auto 10px">
-      Loose by design. Four ~4-hour legs. If a town is treating us well, we
-      stay an extra day. If the wind is honking, we hide.
+    <h2 class="center">The float plan*</h2>
+    <p class="center" style="max-width:680px;margin:6px auto 6px">
+      Four ~4-hour legs. If a town is treating us well, we stay an extra day.
+      If the wind is honking, we hide in a harbor and call it "research."
+    </p>
+    <p class="center" style="max-width:680px;margin:0 auto 10px;font-size:.85rem;color:#41607299;font-style:italic">
+      *"Plan" is a strong word. This is a list of places we'd like the boat to drift near.
     </p>
 
     <div class="legs"></div>
@@ -119,7 +133,7 @@
         <span class="town-badge">1</span>
         <div>
           <h3>East Greenwich, RI</h3>
-          <p class="town-sub">The dock lines come off here. Greenwich Cove, top of Narragansett Bay.</p>
+          <p class="town-sub">Where we load 400 lbs of snacks onto the boat and immediately worry it isn't enough. Greenwich Cove, top of Narragansett Bay.</p>
         </div>
         <span class="leg-chip">Cast off &middot; provisioning</span>
       </div>
@@ -160,7 +174,7 @@
         <span class="town-badge">2</span>
         <div>
           <h3>Newport, RI</h3>
-          <p class="town-sub">The sailing capital. The wharves start at the dinghy dock and never stop.</p>
+          <p class="town-sub">Sailing capital of America. We will absolutely pretend we belong here. The wharves start at the dinghy dock and never stop.</p>
         </div>
         <span class="leg-chip">Mooring or anchor in the harbor</span>
       </div>
@@ -208,7 +222,7 @@
         <span class="town-badge">3</span>
         <div>
           <h3>Cuttyhunk Island</h3>
-          <p class="town-sub">Population: tiny. No cars, no crowds, oysters delivered to your boat.</p>
+          <p class="town-sub">Population: a rounding error. No cars, no crowds, and oysters that motor out to YOU. Peak smug-sailor energy.</p>
         </div>
         <span class="leg-chip">Mooring in the pond</span>
       </div>
@@ -250,7 +264,7 @@
         <span class="town-badge">4</span>
         <div>
           <h3>Martha's Vineyard — Vineyard Haven</h3>
-          <p class="town-sub">The big finish. Land in Tisbury; the bus and bikes reach the rest.</p>
+          <p class="town-sub">The victory lap. We made it &mdash; allegedly on purpose. Land in Tisbury; bus and bikes reach the rest.</p>
         </div>
         <span class="leg-chip">Harbor mooring / town dock</span>
       </div>
@@ -286,6 +300,53 @@
         </div>
       </div>
     </article>
+  </div>
+</section>
+
+<!-- ===================== CREW ROSTER ===================== -->
+<section class="section" id="crew">
+  <div class="wrap">
+    <p class="eyebrow center">Ship's Articles</p>
+    <h2 class="center">Assign your post</h2>
+    <p class="center" style="max-width:640px;margin:6px auto 8px">
+      Every great voyage needs a chain of command. This is not that. Claim a
+      title at the dock; titles are binding and may be revoked over snacks.
+    </p>
+    <p class="center crew-aboard">
+      <span>Aboard:</span> Austin &middot; Camron &middot; Dani &middot; Evan &middot; Gabri &middot; +1 (ice)
+    </p>
+
+    <div class="roster">
+      <div class="role"><h4>Captain of Vibes</h4><p>Final authority on anchorages, snacks, and when "5 o'clock" begins. Owns zero actual qualifications.</p></div>
+      <div class="role"><h4>First Mate of Anxiety</h4><p>Refreshes the weather app 400 times a day. Has opinions about a cloud.</p></div>
+      <div class="role"><h4>Bosun of Snacks</h4><p>Guards the cooler with their life. Knows exactly how much ice is left. It is never enough.</p></div>
+      <div class="role"><h4>Navigator of Optimism</h4><p>Insists the next harbor is "basically right there." It is, in fact, four hours away.</p></div>
+      <div class="role"><h4>Dinghy Pilot of Chaos</h4><p>Has flipped exactly zero dinghies. So far. Practice in the <a href="arcade.html">arcade</a> first.</p></div>
+      <div class="role"><h4>Ship's DJ</h4><p>Aux-cord authority. Every selection will be questioned. Bluetooth range ends at the swim ladder.</p></div>
+      <div class="role"><h4>Quartermaster of Sunscreen</h4><p>Will remind you. You will ignore them. You will regret it by Cuttyhunk.</p></div>
+      <div class="role"><h4>Morale &amp; Raw-Bar Liaison</h4><p>Spots the oyster skiff from a nautical mile. Negotiates dozen counts. Beloved.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== THE BINNACLE (decision engine) ===================== -->
+<section class="section sea-section" id="binnacle">
+  <div class="wrap center">
+    <p class="eyebrow">The Binnacle</p>
+    <h2 style="color:var(--parchment)">The ship's official decision engine</h2>
+    <p style="color:var(--sea-foam);max-width:600px;margin:6px auto 24px">
+      For when democracy fails and the group chat goes quiet. Powered by salt,
+      vibes, and absolutely no meteorology.
+    </p>
+
+    <div class="binnacle-card card">
+      <p id="oracle" class="oracle">Ask the boat a question. It has answers. They are rarely useful.</p>
+      <div class="binnacle-btns">
+        <button class="btn pixel" id="ask-sail">Should we sail today?</button>
+        <button class="btn pixel" id="ask-anchor">Excuse to anchor early</button>
+        <button class="btn pixel" id="ask-blame">Whose fault is this?</button>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -326,5 +387,6 @@
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 <script src="js/route.js"></script>
+<script src="js/silly.js"></script>
 </body>
 </html>
