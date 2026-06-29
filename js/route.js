@@ -28,14 +28,14 @@
     { n: 1, name: 'East Greenwich, RI', ll: [41.6516, -71.4480], target: '#egr',
       land: 'Town Dock / Scalloptown Park',
       walk: 'Main St (provision), waterfront dining — all uphill of the dock.' },
-    { n: 2, name: 'Newport, RI', ll: [41.4878, -71.3265], target: '#newport',
-      land: 'Perrotti Park dinghy dock / Ann St Pier',
+    { n: 2, name: 'Newport, RI', ll: [41.4877, -71.3270], target: '#newport',
+      land: "Perrotti Park dinghy dock — main harbor, by Save The Bay's aquarium",
       walk: "Bowen's & Bannister's Wharf, Thames St — steps away." },
     { n: 3, name: 'Cuttyhunk Island', ll: [41.4258, -70.9270], target: '#cuttyhunk',
       land: 'Cuttyhunk Town Dock (in the pond)',
       walk: 'Lookout hike, general store, beach. The raw-bar boat comes to you.' },
-    { n: 4, name: "Martha's Vineyard — Vineyard Haven", ll: [41.4545, -70.6005], target: '#mv',
-      land: 'Owen Park / Tisbury Town Dock',
+    { n: 4, name: "Martha's Vineyard — Vineyard Haven", ll: [41.4564, -70.5990], target: '#mv',
+      land: 'Tisbury Town Dock — right by the Steamship ferry terminal',
       walk: 'Main St, Black Dog, Owen Park beach. Bus/bikes for Oak Bluffs & Edgartown.' }
   ];
 
@@ -47,7 +47,7 @@
     [41.4900, -71.3960],
     [41.4480, -71.3980], // south of Beavertail
     [41.4560, -71.3500], // round into the East Passage
-    [41.4878, -71.3265], // Newport
+    [41.4877, -71.3270], // Newport (main harbor, by the aquarium)
     [41.4520, -71.3150], // out of Newport into Rhode Island Sound
     [41.4080, -71.2300], // across the sound (south of Sakonnet)
     [41.4080, -71.0800],
@@ -57,7 +57,7 @@
     [41.4180, -70.8600], // Quicks Hole
     [41.3880, -70.8000], // into Vineyard Sound
     [41.4200, -70.6700], // across the sound
-    [41.4545, -70.6005]  // Vineyard Haven
+    [41.4564, -70.5990]  // Vineyard Haven (by the ferry terminal)
   ];
 
   /* ---- map ---- */
