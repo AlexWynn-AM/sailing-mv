@@ -42,11 +42,12 @@
   /* ---- approximate water route, leg by leg (kept off the land) ---- */
   var ROUTE = [
     [41.6516, -71.4480], // East Greenwich dock
-    [41.6280, -71.4250], // out of Greenwich Cove
-    [41.5600, -71.3920], // down the West Passage (west of Jamestown)
-    [41.4900, -71.3960],
-    [41.4480, -71.3980], // south of Beavertail
-    [41.4560, -71.3500], // round into the East Passage
+    [41.6300, -71.4230], // out of Greenwich Cove into the West Passage
+    [41.5950, -71.3880], // down the West Passage
+    [41.5780, -71.3600], // round the north tip of Conanicut (Conanicut Point)
+    [41.5380, -71.3470], // into the East Passage
+    [41.5050, -71.3400], // under the Pell (Newport) Bridge
+    [41.4920, -71.3300], // Newport approach
     [41.4877, -71.3270], // Newport (main harbor, by the aquarium)
     [41.4520, -71.3150], // out of Newport into Rhode Island Sound
     [41.4080, -71.2300], // across the sound (south of Sakonnet)
