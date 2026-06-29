@@ -1,0 +1,182 @@
+/* =========================================================================
+   Sailing Summer MV  —  ARCADE page styling
+   Page-specific only. Shared tokens come from chart.css.
+   Retro pixel / CRT cabinet feel.  NO EMOJI anywhere.
+   ========================================================================= */
+
+/* ---------- intro ---------- */
+.arcade-intro {
+  padding: 48px 0 26px;
+}
+.arcade-title {
+  font-family: var(--font-pixel);
+  font-size: clamp(20px, 5vw, 40px);
+  color: var(--sea-deep);
+  letter-spacing: 1px;
+  margin: 12px 0 16px;
+  text-shadow: 3px 3px 0 var(--gold), 6px 6px 0 var(--rope-dark);
+}
+.arcade-lede {
+  font-family: var(--font-body);
+  max-width: 640px;
+  margin: 0 auto;
+  font-size: 1.05rem;
+}
+
+/* ---------- the cabinet ---------- */
+.arcade-stage-section { padding: 0 0 56px; }
+
+.arcade-cabinet {
+  max-width: 860px;
+  margin: 0 auto;
+  background: var(--sea-deep);
+  border: 4px solid var(--ink);
+  border-radius: 16px;
+  box-shadow: 8px 8px 0 var(--ink), inset 0 0 0 3px var(--rope-dark);
+  padding: 14px;
+}
+
+/* HUD */
+.hud {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  font-family: var(--font-pixel);
+  font-size: 10px;
+  color: var(--gold);
+  background: #06222f;
+  border: 2px solid var(--rope-dark);
+  border-radius: 8px;
+  padding: 9px 12px;
+  margin-bottom: 12px;
+}
+.hud-game { color: var(--sea-foam); }
+.hud-right { display: flex; gap: 14px; }
+.hud-stat { color: var(--route); white-space: nowrap; }
+
+/* the screen + CRT overlay */
+.screen-wrap {
+  position: relative;
+  width: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 3px solid #06222f;
+  box-shadow: inset 0 0 24px #000a;
+  line-height: 0;
+  background: #04161f;
+}
+#game {
+  display: block;
+  width: 100%;
+  height: auto;          /* JS keeps the 860x540 aspect via attributes/DPR */
+  touch-action: none;    /* allow drag controls without page scroll */
+  cursor: pointer;
+}
+.scanlines {
+  position: absolute; inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom, #0000 0 2px, #00000022 2px 4px);
+  mix-blend-mode: multiply;
+  border-radius: 8px;
+}
+.scanlines::after {
+  /* subtle vignette + screen glow */
+  content: "";
+  position: absolute; inset: 0;
+  box-shadow: inset 0 0 60px #000a;
+  background: radial-gradient(circle at 50% 40%, #2fdc5a08, transparent 70%);
+}
+
+/* ---------- on-screen controls ---------- */
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  margin-top: 14px;
+  min-height: 8px;
+  flex-wrap: wrap;
+}
+.ctl-group { display: flex; }
+
+/* d-pad as a 3x3 grid */
+.dpad {
+  display: grid;
+  grid-template-columns: repeat(3, 56px);
+  grid-template-rows: repeat(3, 48px);
+  gap: 4px;
+}
+.dpad .up    { grid-column: 2; grid-row: 1; }
+.dpad .left  { grid-column: 1; grid-row: 2; }
+.dpad .right { grid-column: 3; grid-row: 2; }
+.dpad .down  { grid-column: 2; grid-row: 3; }
+
+.pad {
+  font-family: var(--font-pixel);
+  font-size: 12px;
+  color: var(--parchment);
+  background: var(--sea);
+  border: 2px solid var(--ink);
+  border-radius: 8px;
+  box-shadow: 0 4px 0 var(--ink);
+  cursor: pointer;
+  padding: 10px 12px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+.pad:active { transform: translateY(3px); box-shadow: 0 1px 0 var(--ink); }
+
+.trim .pad { padding: 14px 18px; }
+
+.bigbtn {
+  font-family: var(--font-pixel);
+  font-size: 18px;
+  color: #04161f;
+  background: var(--gold);
+  border: 3px solid var(--ink);
+  border-radius: 12px;
+  box-shadow: 0 6px 0 var(--ink);
+  padding: 16px 48px;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+.bigbtn:active { transform: translateY(4px); box-shadow: 0 2px 0 var(--ink); }
+
+/* ---------- level select ---------- */
+.level-select {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  max-width: 860px;
+  margin: 22px auto 0;
+}
+.sel-btn { font-size: 9px; }
+.sel-btn.current {
+  background: var(--route);
+  color: #04161f;
+}
+
+.ctl-hint {
+  text-align: center;
+  font-family: var(--font-chart);
+  color: var(--ink);
+  opacity: 0.8;
+  font-size: 0.85rem;
+  max-width: 640px;
+  margin: 16px auto 0;
+}
+
+@media (max-width: 640px) {
+  .arcade-cabinet { padding: 10px; border-width: 3px; box-shadow: 5px 5px 0 var(--ink), inset 0 0 0 2px var(--rope-dark); }
+  .hud { font-size: 8px; padding: 7px 9px; }
+  .hud-right { gap: 9px; }
+  .dpad { grid-template-columns: repeat(3, 52px); grid-template-rows: repeat(3, 44px); }
+  .bigbtn { font-size: 15px; padding: 14px 34px; }
+  .sel-btn { font-size: 8px; padding: 9px 12px; }
+}

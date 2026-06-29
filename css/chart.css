@@ -1,0 +1,156 @@
+/* =========================================================================
+   Sailing Summer MV  —  shared "nautical chart" design system
+   Blend of: real nautical chart (soundings, compass, rope) + cartoon boats
+   + retro-pixel arcade accents.  NO EMOJI anywhere.
+   ========================================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Special+Elite&family=Press+Start+2P&family=Bitter:ital,wght@0,400;0,600;1,400&display=swap');
+
+:root {
+  /* --- chart palette --- */
+  --sea-deep:      #0a3147;
+  --sea:           #14618f;
+  --sea-mid:       #2b86b8;
+  --sea-shallow:   #8ecadd;
+  --sea-foam:      #d7f0f6;
+
+  --parchment:     #f4ead0;
+  --parchment-2:   #ece0bf;
+  --parchment-3:   #e2d3a8;
+  --land:          #efe3c0;
+
+  --ink:           #1d3b4d;
+  --ink-soft:      #41607240;
+
+  --buoy-red:      #d6453d;
+  --buoy-green:    #2f9e57;
+  --rope:          #c9a86a;
+  --rope-dark:     #a9854a;
+  --route:         #2fdc5a;   /* the bright hand-drawn green from the group chat */
+  --route-glow:    #2fdc5a66;
+  --gold:          #e7b54b;
+
+  /* --- fonts --- */
+  --font-display: 'Fredoka', system-ui, sans-serif;   /* rounded, friendly */
+  --font-chart:   'Special Elite', 'Courier New', monospace; /* chart labels */
+  --font-body:    'Bitter', Georgia, serif;
+  --font-pixel:   'Press Start 2P', monospace;
+
+  --maxw: 1080px;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--ink);
+  background-color: var(--parchment);
+  /* faint chart grid + paper grain */
+  background-image:
+    linear-gradient(var(--ink-soft) 1px, transparent 1px),
+    linear-gradient(90deg, var(--ink-soft) 1px, transparent 1px),
+    radial-gradient(circle at 20% 30%, #00000008 0%, transparent 60%);
+  background-size: 38px 38px, 38px 38px, 100% 100%;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 { font-family: var(--font-display); line-height: 1.1; font-weight: 700; }
+a { color: var(--sea); }
+
+/* ---------- shared top nav (chart header) ---------- */
+.chart-nav {
+  position: sticky; top: 0; z-index: 50;
+  display: flex; align-items: center; gap: 18px;
+  padding: 10px 20px;
+  background: var(--sea-deep);
+  color: var(--parchment);
+  border-bottom: 3px solid var(--rope);
+  box-shadow: 0 2px 0 var(--rope-dark);
+}
+.chart-nav .brand {
+  font-family: var(--font-pixel); font-size: 11px; letter-spacing: 1px;
+  color: var(--gold); text-decoration: none; white-space: nowrap;
+}
+.chart-nav .brand b { color: var(--sea-foam); }
+.chart-nav .spacer { flex: 1; }
+.chart-nav a.navlink {
+  color: var(--parchment); text-decoration: none;
+  font-family: var(--font-chart); font-size: 0.95rem;
+  padding: 4px 10px; border-radius: 6px;
+  border: 1px solid transparent;
+}
+.chart-nav a.navlink:hover { border-color: var(--rope); color: var(--gold); }
+.chart-nav a.navlink.active { background: var(--sea); border-color: var(--rope); color: #fff; }
+
+/* ---------- buttons ---------- */
+.btn {
+  display: inline-block; cursor: pointer;
+  font-family: var(--font-display); font-weight: 600; font-size: 1rem;
+  color: var(--parchment); background: var(--sea);
+  padding: 12px 22px; border-radius: 999px;
+  border: 2px solid var(--ink);
+  box-shadow: 0 4px 0 var(--ink);
+  text-decoration: none;
+  transition: transform .08s ease, box-shadow .08s ease;
+}
+.btn:hover { transform: translateY(2px); box-shadow: 0 2px 0 var(--ink); }
+.btn:active { transform: translateY(4px); box-shadow: 0 0 0 var(--ink); }
+.btn.alt { background: var(--buoy-red); }
+.btn.ghost { background: transparent; color: var(--ink); box-shadow: 0 4px 0 var(--rope-dark); }
+.btn.pixel { font-family: var(--font-pixel); font-size: 11px; border-radius: 4px; box-shadow: 0 4px 0 var(--ink); }
+
+/* ---------- layout helpers ---------- */
+.wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 20px; }
+.section { padding: 64px 0; }
+.center { text-align: center; }
+.eyebrow {
+  font-family: var(--font-pixel); font-size: 10px; letter-spacing: 2px;
+  color: var(--buoy-red); text-transform: uppercase;
+}
+
+/* ---------- chart card ---------- */
+.card {
+  background: var(--parchment-2);
+  border: 2px solid var(--ink);
+  border-radius: 14px;
+  box-shadow: 6px 6px 0 var(--ink);
+  padding: 22px;
+}
+
+/* dashed depth-contour divider */
+.contour {
+  height: 0; border: none;
+  border-top: 2px dashed #2b86b870;
+  margin: 40px 0;
+}
+
+/* footer */
+.chart-foot {
+  background: var(--sea-deep); color: var(--sea-foam);
+  border-top: 3px solid var(--rope);
+  text-align: center; padding: 28px 20px;
+  font-family: var(--font-chart); font-size: 0.9rem;
+}
+.chart-foot a { color: var(--gold); }
+
+/* sounding numbers scattered as decoration (used via .sounding spans) */
+.sounding { font-family: var(--font-chart); color: #2b86b8aa; font-size: 0.8rem; }
+
+/* small helper: rope rule */
+.rope-rule {
+  height: 8px; border-radius: 8px; margin: 22px 0;
+  background:
+    repeating-linear-gradient(45deg, var(--rope) 0 8px, var(--rope-dark) 8px 16px);
+  border: 1px solid var(--rope-dark);
+}
+
+@media (max-width: 640px) {
+  .chart-nav { gap: 8px; padding: 8px 12px; flex-wrap: wrap; }
+  .chart-nav .brand { font-size: 9px; }
+  .chart-nav a.navlink { font-size: 0.8rem; padding: 3px 7px; }
+  .section { padding: 44px 0; }
+}

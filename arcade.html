@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sailing Summer MV — Arcade: Learn the Ropes</title>
+<meta name="description" content="Three silly retro-pixel mini-games that teach the crew real sailing basics: row the dinghy, catch the mooring pennant, and trim the sail.">
+<link rel="stylesheet" href="css/chart.css">
+<link rel="stylesheet" href="css/arcade.css">
+</head>
+<body>
+
+<nav class="chart-nav">
+  <a class="brand" href="index.html">SAILING <b>SUMMER MV</b></a>
+  <span class="spacer"></span>
+  <a class="navlink" href="index.html">Chart</a>
+  <a class="navlink" href="index.html#itinerary">Itinerary</a>
+  <a class="navlink active" href="arcade.html">Arcade</a>
+  <a class="navlink" href="helm.html">Helm 3D</a>
+</nav>
+
+<!-- ===================== INTRO ===================== -->
+<section class="section arcade-intro">
+  <div class="wrap center">
+    <p class="eyebrow">Crew Training (allegedly)</p>
+    <h1 class="arcade-title">Learn the Ropes</h1>
+    <p class="arcade-lede">
+      Three pixel mini-games for the crew of <b>Austin, Camron, Dani, Evan
+      &amp; Gabri</b>. Completely silly, secretly useful: each one teaches a
+      real sailing basic you will absolutely need somewhere between East
+      Greenwich and Martha&rsquo;s Vineyard. No water, no wet socks, no
+      navigational authority whatsoever.
+    </p>
+    <div class="rope-rule" style="max-width:340px;margin:22px auto 0"></div>
+  </div>
+</section>
+
+<!-- ===================== ARCADE ===================== -->
+<section class="arcade-stage-section">
+  <div class="wrap">
+    <div class="arcade-cabinet">
+
+      <!-- HUD bar -->
+      <div class="hud" id="hud">
+        <div class="hud-left">
+          <span class="hud-game" id="hudGame">CREW TRAINING</span>
+        </div>
+        <div class="hud-right">
+          <span class="hud-stat" id="hudScore">SCORE 0</span>
+          <span class="hud-stat" id="hudTime">TIME --</span>
+        </div>
+      </div>
+
+      <!-- The shared canvas -->
+      <div class="screen-wrap">
+        <canvas id="game" width="860" height="540" aria-label="Sailing arcade game screen"></canvas>
+        <div class="scanlines" aria-hidden="true"></div>
+      </div>
+
+      <!-- Touch / on-screen controls (shown per game) -->
+      <div class="controls" id="controls" aria-hidden="false">
+
+        <!-- D-pad (Game 1) -->
+        <div class="ctl-group dpad" id="ctlDpad" hidden>
+          <button class="pad up"    data-dir="up"    aria-label="Row up">&#9650;</button>
+          <button class="pad left"  data-dir="left"  aria-label="Row left">&#9664;</button>
+          <button class="pad right" data-dir="right" aria-label="Row right">&#9654;</button>
+          <button class="pad down"  data-dir="down"  aria-label="Row down">&#9660;</button>
+        </div>
+
+        <!-- Single action button (Game 2) -->
+        <div class="ctl-group action" id="ctlGrab" hidden>
+          <button class="bigbtn" id="grabBtn">GRAB</button>
+        </div>
+
+        <!-- Trim controls (Game 3) -->
+        <div class="ctl-group trim" id="ctlTrim" hidden>
+          <button class="pad" id="trimLeft" aria-label="Ease sail">&#9664; EASE</button>
+          <button class="pad" id="trimRight" aria-label="Trim sail">TRIM &#9654;</button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Level select / menu under the cabinet -->
+    <div class="level-select" id="levelSelect">
+      <button class="btn pixel sel-btn" data-game="0">Menu</button>
+      <button class="btn pixel sel-btn" data-game="1">1 &middot; Dinghy Row</button>
+      <button class="btn pixel sel-btn" data-game="2">2 &middot; Catch Pennant</button>
+      <button class="btn pixel sel-btn" data-game="3">3 &middot; Trim Sail</button>
+    </div>
+
+    <p class="ctl-hint" id="ctlHint">
+      Desktop: arrow keys / WASD to move. Phone: use the on-screen buttons or drag on the screen.
+    </p>
+  </div>
+</section>
+
+<footer class="chart-foot">
+  <div class="rope-rule" style="max-width:300px;margin:0 auto 16px"></div>
+  Sailing Summer MV &middot; July 2026 &middot; plotted with love and zero navigational authority.<br>
+  Fair winds, see you on the mooring.
+</footer>
+
+<script src="js/arcade.js"></script>
+</body>
+</html>

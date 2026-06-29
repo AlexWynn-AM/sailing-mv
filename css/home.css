@@ -1,0 +1,116 @@
+/* index-page-specific styles */
+
+/* ---------- hero ---------- */
+.hero {
+  background:
+    radial-gradient(circle at 80% 0%, #ffffff55, transparent 50%),
+    linear-gradient(160deg, var(--sea-foam), var(--parchment) 70%);
+  border-bottom: 3px solid var(--rope);
+  padding: 56px 0 64px;
+}
+.hero-grid {
+  display: grid; grid-template-columns: 1.4fr 1fr; gap: 24px; align-items: center;
+}
+.hero h1 { font-size: clamp(2.4rem, 6vw, 4.2rem); margin: 6px 0 14px; color: var(--sea-deep); }
+.hero .lede { font-size: 1.15rem; max-width: 46ch; }
+.dateline { margin: 18px 0 24px; font-family: var(--font-chart); font-size: 0.98rem; }
+.dateline .tag {
+  display: inline-block; background: var(--sea-deep); color: var(--gold);
+  font-family: var(--font-pixel); font-size: 8px; letter-spacing: 1px;
+  padding: 4px 7px; border-radius: 4px; margin: 0 6px 0 0; vertical-align: middle;
+}
+.dateline .tag + * { }
+.hero-cta { display: flex; gap: 14px; flex-wrap: wrap; }
+.hero-boat { aspect-ratio: 1; max-width: 360px; margin: 0 auto; }
+.boat-bob { animation: bob 3.2s ease-in-out infinite; transform-origin: 110px 120px; }
+.wave-row path { animation: drift 4s linear infinite; }
+@keyframes bob { 0%,100%{ transform: translateY(0) rotate(-2deg);} 50%{ transform: translateY(-8px) rotate(2deg);} }
+@keyframes drift { from { transform: translateX(0);} to { transform: translateX(-60px);} }
+
+/* ---------- sea sections (dark chart-blue) ---------- */
+.sea-section {
+  background:
+    radial-gradient(circle at 15% 20%, #ffffff10, transparent 40%),
+    linear-gradient(180deg, var(--sea), var(--sea-deep));
+  color: var(--parchment);
+}
+.sea-section .eyebrow { color: var(--gold); }
+
+/* ---------- chart map ---------- */
+.chartbox {
+  background: var(--parchment);
+  border: 3px solid var(--ink);
+  border-radius: 16px;
+  box-shadow: 10px 10px 0 #00000040;
+  padding: 10px;
+  overflow: hidden;
+}
+#routeMap { width: 100%; height: auto; display: block; }
+
+.wp { cursor: pointer; }
+.wp-dot { fill: var(--buoy-red); stroke: #fff; stroke-width: 3; transition: r .15s ease, fill .15s; }
+.wp:hover .wp-dot, .wp:focus .wp-dot { r: 20; fill: var(--buoy-green); outline: none; }
+.wp-num { fill: #fff; font-family: var(--font-display); font-weight: 700; font-size: 18px; pointer-events: none; }
+.wp-label {
+  fill: var(--ink); font-family: var(--font-chart); font-size: 16px;
+  paint-order: stroke; stroke: var(--parchment); stroke-width: 4px; pointer-events: none;
+}
+#routeLine { transition: none; }
+
+/* ---------- legs strip (built by JS) ---------- */
+.legs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 26px 0 4px; }
+.leg {
+  background: var(--parchment-2); border: 2px solid var(--ink); border-radius: 12px;
+  padding: 14px; text-align: center; box-shadow: 4px 4px 0 var(--ink);
+}
+.leg .lg-num { font-family: var(--font-pixel); font-size: 12px; color: var(--buoy-red); }
+.leg .lg-name { font-family: var(--font-display); font-weight: 700; font-size: 1.05rem; margin: 6px 0 2px; }
+.leg .lg-meta { font-family: var(--font-chart); font-size: 0.82rem; color: #41607299; }
+
+/* ---------- town cards ---------- */
+.town { scroll-margin-top: 70px; }
+.town-head { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.town-badge {
+  flex: 0 0 auto; width: 46px; height: 46px; border-radius: 50%;
+  background: var(--buoy-red); color: #fff; border: 3px solid var(--ink);
+  font-family: var(--font-display); font-weight: 700; font-size: 1.4rem;
+  display: grid; place-items: center; box-shadow: 3px 3px 0 var(--ink);
+}
+.town-head h3 { margin: 0; font-size: 1.7rem; color: var(--sea-deep); }
+.town-sub { margin: 2px 0 0; font-style: italic; color: #416072; }
+.leg-chip {
+  margin-left: auto; font-family: var(--font-chart); font-size: 0.82rem;
+  background: var(--sea-foam); border: 1.5px solid var(--sea-mid);
+  padding: 5px 10px; border-radius: 999px; color: var(--sea-deep);
+}
+.town-body { display: grid; grid-template-columns: 2fr 1fr; gap: 22px; margin-top: 16px; }
+.town-body h4 { font-family: var(--font-display); margin: 14px 0 4px; color: var(--buoy-green); }
+.town-body ul { margin: 6px 0; padding-left: 20px; }
+.town-body li { margin: 6px 0; }
+.town-side {
+  background: var(--parchment-2); border: 2px dashed var(--sea-mid);
+  border-radius: 12px; padding: 16px; align-self: start;
+}
+.leg-note { margin: 0; font-size: 0.95rem; }
+
+/* ---------- game cards ---------- */
+.game-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 760px; margin: 0 auto; }
+.game-card {
+  display: block; text-decoration: none; text-align: left;
+  background: var(--parchment); color: var(--ink);
+  border: 3px solid var(--ink); border-radius: 16px; padding: 22px;
+  box-shadow: 8px 8px 0 #00000050; transition: transform .1s ease, box-shadow .1s ease;
+}
+.game-card:hover { transform: translate(-2px,-2px); box-shadow: 12px 12px 0 #00000060; }
+.gc-kicker { font-family: var(--font-pixel); font-size: 9px; color: var(--buoy-red); letter-spacing: 1px; }
+.game-card h3 { margin: 8px 0 6px; font-size: 1.5rem; color: var(--sea-deep); }
+.game-card p { margin: 0 0 16px; }
+
+@media (max-width: 760px) {
+  .hero-grid { grid-template-columns: 1fr; }
+  .hero-boat { max-width: 240px; }
+  .legs { grid-template-columns: 1fr 1fr; }
+  .town-body { grid-template-columns: 1fr; }
+  .leg-chip { margin-left: 0; }
+  .game-cards { grid-template-columns: 1fr; }
+}

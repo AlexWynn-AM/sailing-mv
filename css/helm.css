@@ -1,0 +1,159 @@
+/* =========================================================================
+   Helm 3D — page-specific styles (the chart.css tokens do the heavy lifting)
+   ========================================================================= */
+
+.helm-stage {
+  position: relative;
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  aspect-ratio: 16 / 9;
+  border: 3px solid var(--ink);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 6px 6px 0 var(--ink);
+  background: var(--sea-deep);
+  touch-action: none;            /* stop scroll/zoom on the canvas */
+  user-select: none;
+}
+
+#helm-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* ---------- HUD ---------- */
+.hud {
+  position: absolute;
+  top: 12px; left: 12px; right: 12px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  pointer-events: none;          /* let clicks fall through except buttons */
+}
+.hud > * { pointer-events: auto; }
+
+.hud-card {
+  background: #0a3147cc;
+  border: 1px solid var(--rope);
+  border-radius: 10px;
+  padding: 8px 12px;
+  color: var(--sea-foam);
+  font-family: var(--font-chart);
+  font-size: 0.82rem;
+  min-width: 168px;
+  backdrop-filter: blur(2px);
+}
+.hud-row {
+  display: flex; justify-content: space-between; gap: 14px;
+  line-height: 1.5;
+}
+.hud-lbl { color: var(--sea-shallow); }
+.hud-val { color: var(--gold); font-weight: bold; }
+.center { text-align: center; }
+
+.hud-wind {
+  background: #0a3147cc;
+  border: 1px solid var(--rope);
+  border-radius: 10px;
+  padding: 6px 8px;
+  color: var(--sea-foam);
+  font-family: var(--font-chart);
+  font-size: 0.72rem;
+}
+.compass {
+  position: relative;
+  width: 52px; height: 52px;
+  margin: 4px auto 0;
+  border: 2px solid var(--sea-shallow);
+  border-radius: 50%;
+}
+.compass-n {
+  position: absolute; top: -2px; left: 50%; transform: translateX(-50%);
+  font-size: 0.6rem; color: var(--sea-shallow);
+}
+.wind-arrow {
+  position: absolute; top: 50%; left: 50%;
+  width: 0; height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-bottom: 22px solid var(--buoy-red);
+  transform-origin: 50% 100%;
+  transform: translate(-50%, -100%) rotate(0deg);
+  transition: transform .25s linear;
+}
+
+#restart { font-size: 9px; padding: 8px 10px; }
+
+/* ---------- touch controls ---------- */
+.touch {
+  position: absolute;
+  bottom: 12px; left: 12px; right: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  pointer-events: none;
+}
+.touch .tbtn, .touch .tcol { pointer-events: auto; }
+.tcol { display: flex; flex-direction: column; gap: 8px; }
+.tbtn {
+  width: 58px; height: 52px;
+  font-size: 1.1rem;
+  color: var(--parchment);
+  background: #14618fcc;
+  border: 2px solid var(--ink);
+  border-radius: 12px;
+  box-shadow: 0 3px 0 var(--ink);
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  -webkit-tap-highlight-color: transparent;
+}
+.tbtn:active { transform: translateY(2px); box-shadow: 0 1px 0 var(--ink); background: var(--sea-mid); }
+
+/* hide touch pad on hover-capable / fine pointers (desktop) */
+@media (hover: hover) and (pointer: fine) {
+  .touch { display: none; }
+}
+
+/* ---------- overlays ---------- */
+.overlay {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  background: radial-gradient(circle at 50% 40%, #0a314799, #0a3147ee);
+  z-index: 20;
+}
+.overlay.hidden { display: none; }
+.overlay-card {
+  text-align: center;
+  background: var(--parchment-2);
+  border: 2px solid var(--ink);
+  border-radius: 14px;
+  box-shadow: 6px 6px 0 var(--ink);
+  padding: 26px 28px;
+  max-width: 80%;
+}
+.overlay-card h2 { font-size: clamp(1.4rem, 4vw, 2.1rem); margin: .25em 0; color: var(--ink); }
+.overlay-card p { margin: .4em 0; color: var(--ink); font-size: .98rem; }
+.overlay-card .legend {
+  font-family: var(--font-chart);
+  font-size: .82rem;
+  background: var(--parchment);
+  border: 1px dashed var(--rope-dark);
+  border-radius: 8px;
+  padding: 8px 10px;
+  margin-top: 12px;
+}
+.overlay-card .btn { margin-top: 16px; }
+
+/* ---------- small screens ---------- */
+@media (max-width: 640px) {
+  .helm-stage { border-radius: 12px; }
+  .hud-card { min-width: 0; font-size: .72rem; padding: 6px 8px; }
+  .hud-wind { font-size: .62rem; }
+  .compass { width: 42px; height: 42px; }
+  .tbtn { width: 64px; height: 56px; }
+  #restart { font-size: 8px; }
+}

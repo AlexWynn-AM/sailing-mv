@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Helm 3D &middot; Sailing Summer MV</title>
+  <meta name="description" content="Take the wheel — a tiny 3D sailing game. Steer the boat down the channel and dock at the next harbor.">
+
+  <link rel="stylesheet" href="css/chart.css">
+  <link rel="stylesheet" href="css/helm.css">
+
+  <script type="importmap">
+  { "imports": { "three": "https://unpkg.com/three@0.160.0/build/three.module.js" } }
+  </script>
+</head>
+<body>
+
+  <nav class="chart-nav">
+    <a class="brand" href="index.html">SAILING <b>SUMMER MV</b></a>
+    <span class="spacer"></span>
+    <a class="navlink" href="index.html">Chart</a>
+    <a class="navlink" href="index.html#itinerary">Itinerary</a>
+    <a class="navlink" href="arcade.html">Arcade</a>
+    <a class="navlink active" href="helm.html">Helm 3D</a>
+  </nav>
+
+  <!-- intro -->
+  <section class="section" style="padding-bottom:28px">
+    <div class="wrap center">
+      <div class="eyebrow">Crew Training &middot; Mandatory Fun</div>
+      <h1 style="font-size:clamp(2rem,5vw,3.2rem);margin:.2em 0">Take the Wheel</h1>
+      <p style="max-width:620px;margin:0 auto;font-size:1.05rem">
+        Austin, Camron, Dani, Evan, Gabri &mdash; before anyone touches the real boat,
+        everyone runs the simulator. Keep the <b style="color:var(--buoy-red)">red</b> buoys
+        on your right going out, the <b style="color:var(--buoy-green)">green</b> on your left,
+        thread the channel, and park it on the dock. Bump a rock and the captain sighs. That's it.
+      </p>
+    </div>
+  </section>
+
+  <!-- game -->
+  <div class="wrap">
+    <div id="stage" class="helm-stage">
+      <canvas id="helm-canvas"></canvas>
+
+      <!-- HUD -->
+      <div id="hud" class="hud">
+        <div class="hud-card">
+          <div class="hud-row"><span class="hud-lbl">Next port</span><span id="hud-dest" class="hud-val">Newport</span></div>
+          <div class="hud-row"><span class="hud-lbl">Heading</span><span id="hud-head" class="hud-val">N</span></div>
+          <div class="hud-row"><span class="hud-lbl">Speed</span><span id="hud-speed" class="hud-val">0.0 kn</span></div>
+          <div class="hud-row"><span class="hud-lbl">To go</span><span id="hud-dist" class="hud-val">--</span></div>
+        </div>
+        <div class="hud-wind">
+          <div class="hud-lbl center">Wind</div>
+          <div class="compass">
+            <div id="wind-arrow" class="wind-arrow"></div>
+            <span class="compass-n">N</span>
+          </div>
+        </div>
+        <button id="restart" class="btn pixel" type="button">Restart Leg</button>
+      </div>
+
+      <!-- touch controls -->
+      <div id="touch" class="touch">
+        <button class="tbtn" id="t-left" aria-label="Steer left">&#9664;</button>
+        <div class="tcol">
+          <button class="tbtn" id="t-up" aria-label="Throttle up">&#9650;</button>
+          <button class="tbtn" id="t-down" aria-label="Throttle down">&#9660;</button>
+        </div>
+        <button class="tbtn" id="t-right" aria-label="Steer right">&#9654;</button>
+      </div>
+
+      <!-- start overlay -->
+      <div id="overlay" class="overlay">
+        <div class="overlay-card">
+          <div class="eyebrow">Helm Simulator</div>
+          <h2>Take the Wheel</h2>
+          <p>Steer down the channel and dock at the next harbor.</p>
+          <p class="legend">
+            <b>Desktop:</b> Arrow keys or W A S D &mdash; left/right steer, up/down throttle.<br>
+            <b>Phone:</b> on-screen left / right / throttle.
+          </p>
+          <button id="start-btn" class="btn pixel" type="button">Press to Sail</button>
+        </div>
+      </div>
+
+      <!-- win overlay -->
+      <div id="win" class="overlay hidden">
+        <div class="overlay-card">
+          <div class="eyebrow">Moored Up</div>
+          <h2 id="win-title">Docked!</h2>
+          <p id="win-sub">Welcome to Newport. Lines secured, fenders out, drinks on.</p>
+          <button id="next-leg" class="btn pixel" type="button">Next Leg</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="section" style="padding-top:32px">
+    <div class="wrap center">
+      <div class="rope-rule" style="max-width:300px;margin:0 auto 18px"></div>
+      <p style="max-width:560px;margin:0 auto;color:var(--ink)">
+        The route: East Greenwich &rarr; Newport &rarr; Cuttyhunk &rarr; Martha's Vineyard
+        (Vineyard Haven) &rarr; home. Four legs, one wheel, zero navigational authority.
+      </p>
+    </div>
+  </section>
+
+  <footer class="chart-foot">
+    <div class="rope-rule" style="max-width:300px;margin:0 auto 16px"></div>
+    Sailing Summer MV &middot; July 2026 &middot; plotted with love and zero navigational authority.<br>
+    Fair winds, see you on the mooring.
+  </footer>
+
+  <script type="module" src="js/helm.js"></script>
+</body>
+</html>
