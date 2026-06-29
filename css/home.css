@@ -230,6 +230,7 @@
   margin-top: 7px; font-family: var(--font-chart); font-size: 0.82rem;
   color: #416072; text-align: center;
 }
+.credit { display: block; font-size: 0.68rem; opacity: 0.65; margin-top: 2px; }
 
 /* ---------- game cards ---------- */
 .game-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 760px; margin: 0 auto; }
