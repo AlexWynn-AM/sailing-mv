@@ -83,5 +83,41 @@ body.grog .tentacle { bottom: -10px; }
 }
 .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
+/* ---- trip bingo ---- */
+.bingo-grid {
+  display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px;
+  max-width: 700px; margin: 24px auto 18px;
+}
+.bingo-cell {
+  position: relative; aspect-ratio: 1;
+  background: var(--parchment-2); border: 2px solid var(--ink); border-radius: 10px;
+  padding: 6px; display: grid; place-items: center; text-align: center;
+  font-family: var(--font-body); font-size: 0.72rem; line-height: 1.18;
+  color: var(--ink); cursor: pointer; box-shadow: 3px 3px 0 var(--ink);
+  transition: transform .08s ease, background .12s; user-select: none; overflow: hidden;
+}
+.bingo-cell:hover { transform: translateY(-2px); }
+.bingo-cell:active { transform: translateY(1px); }
+.bingo-cell.free { background: var(--sea-foam); font-weight: 600; color: var(--sea-deep); }
+.bingo-cell.marked { background: var(--route); }
+.bingo-cell.marked::after {
+  content: "AYE"; position: absolute;
+  font-family: var(--font-pixel); font-size: 10px; color: var(--buoy-red);
+  border: 3px solid var(--buoy-red); border-radius: 8px; padding: 4px 6px;
+  transform: rotate(-13deg); opacity: .92; background: #ffffffcc;
+}
+.bingo-cell.free.marked::after { content: ""; border: none; background: none; padding: 0; }
+.bingo-cell.win { animation: winpulse .7s ease infinite; z-index: 1; }
+@keyframes winpulse {
+  0%,100% { box-shadow: 3px 3px 0 var(--ink); }
+  50% { box-shadow: 0 0 0 4px var(--gold), 3px 3px 0 var(--ink); }
+}
+.bingo-ctl { display: flex; gap: 14px; align-items: center; justify-content: center; flex-wrap: wrap; }
+.bingo-status { font-family: var(--font-chart); color: var(--ink); }
+
 @media (max-width: 860px) { .roster { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) {
+  .bingo-cell { font-size: 0.58rem; padding: 4px; border-radius: 8px; box-shadow: 2px 2px 0 var(--ink); }
+  .bingo-cell.marked::after { font-size: 8px; padding: 2px 4px; }
+}
 @media (max-width: 520px) { .roster { grid-template-columns: 1fr; } .seagull { display: none; } }

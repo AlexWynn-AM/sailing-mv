@@ -134,4 +134,95 @@
       pos = (k === SEQ[0]) ? 1 : 0;
     }
   });
+
+  /* ---------- trip bingo ---------- */
+  var BINGO_POOL = [
+    "“That’s a whale!” (it’s a lobster pot)",
+    "Phone dropped in the water",
+    "Anchor early “for lunch” (it’s 5pm)",
+    "Ice runs out before Cuttyhunk",
+    "DJ privileges formally revoked",
+    "“It’s basically right there” (4 hrs)",
+    "Sunscreen regret sets in",
+    "Seagull steals a snack",
+    "Someone circles the mooring twice",
+    "We blame the wind",
+    "A hat goes overboard",
+    "Flip-flop lost at sea",
+    "Raw-bar boat sighted; cheering",
+    "Sunglasses “lost” (on their head)",
+    "“Five more minutes” = an hour",
+    "Swim “just to check the water”",
+    "Good snacks gone by noon",
+    "Weathered in, calls it “research”",
+    "Speaker dies mid-banger",
+    "A knot no one can untie",
+    "Detour for “better happy hour”",
+    "Someone points the wrong way",
+    "Group chat goes silent at 5:55",
+    "Oysters wildly over-ordered",
+    "Dinghy won’t start (3 tries)",
+    "Aggressive GPS narration",
+    "Sunset photo blocks the helm",
+    "“I read it on a website” (this one)",
+    "Captain of Vibes overrules logic",
+    "A nautical word said very wrong"
+  ];
+  var FREE = "“This is the life”";
+  var grid = document.getElementById('bingo-grid');
+  var statusEl = document.getElementById('bingo-status');
+
+  function shuffle(a) {
+    a = a.slice();
+    for (var i = a.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var t = a[i]; a[i] = a[j]; a[j] = t;
+    }
+    return a;
+  }
+
+  function checkBingo() {
+    var cells = grid.children;
+    function m(i) { return cells[i].classList.contains('marked'); }
+    var lines = [], r, c;
+    for (r = 0; r < 5; r++) lines.push([r*5, r*5+1, r*5+2, r*5+3, r*5+4]);
+    for (c = 0; c < 5; c++) lines.push([c, c+5, c+10, c+15, c+20]);
+    lines.push([0, 6, 12, 18, 24]);
+    lines.push([4, 8, 12, 16, 20]);
+    var won = null;
+    for (var L = 0; L < lines.length; L++) {
+      if (lines[L].every(m)) { won = lines[L]; break; }
+    }
+    if (won) {
+      Array.prototype.forEach.call(cells, function (el) { el.classList.remove('win'); });
+      won.forEach(function (i) { cells[i].classList.add('win'); });
+      statusEl.textContent = 'BINGO. It was always going to happen.';
+      toast('BINGO — the sea provides');
+    }
+  }
+
+  function buildBingo() {
+    if (!grid) return;
+    var items = shuffle(BINGO_POOL).slice(0, 24);
+    items.splice(12, 0, FREE); // center free space
+    grid.innerHTML = '';
+    items.forEach(function (txt, idx) {
+      var cell = document.createElement('button');
+      cell.type = 'button';
+      cell.className = 'bingo-cell' + (idx === 12 ? ' free marked' : '');
+      cell.textContent = txt;
+      if (idx !== 12) {
+        cell.addEventListener('click', function () {
+          cell.classList.toggle('marked');
+          checkBingo();
+        });
+      }
+      grid.appendChild(cell);
+    });
+    if (statusEl) statusEl.textContent = 'Tap a square when it happens.';
+  }
+
+  var bnew = document.getElementById('bingo-new');
+  if (bnew) bnew.addEventListener('click', buildBingo);
+  buildBingo();
 })();
