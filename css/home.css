@@ -113,6 +113,27 @@
   max-width: 640px; margin: 10px auto 0;
 }
 
+/* ---------- getting home / escape routes ---------- */
+.escape-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; max-width: 920px; margin: 0 auto; }
+.escape-card {
+  background: var(--parchment); color: var(--ink);
+  border: 2px solid var(--ink); border-radius: 14px; padding: 18px 20px;
+  box-shadow: 6px 6px 0 #00000040;
+}
+.esc-head { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+.esc-head h4 { margin: 0; font-size: 1.25rem; color: var(--sea-deep); }
+.esc-chip {
+  margin-left: auto; font-family: var(--font-pixel); font-size: 8px; letter-spacing: 1px;
+  padding: 5px 8px; border-radius: 6px; border: 2px solid var(--ink); white-space: nowrap;
+}
+.esc-chip.easy { background: var(--buoy-green); color: #fff; }
+.esc-chip.plan { background: var(--buoy-red); color: #fff; }
+.esc-chip.home { background: var(--gold); color: #04161f; }
+.escape-card ul { margin: 0; padding-left: 18px; }
+.escape-card li { margin: 7px 0; font-size: 0.95rem; }
+.escape-card p { margin: 0; font-size: 0.95rem; }
+@media (max-width: 720px) { .escape-grid { grid-template-columns: 1fr; } }
+
 /* "worth a ride" note in town cards */
 .ride-note {
   margin-top: 12px; padding: 10px 12px;
